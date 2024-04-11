@@ -2,6 +2,8 @@ import express from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import activationRoutes from "./routes/activationRoutes";
+import chatRoutes from "./routes/chatRouter";
+import userRoutes from "./routes/userRouter";
 import dotenv from "dotenv";
 dotenv.config();
 const app = express();
@@ -23,6 +25,8 @@ mongoose.connection.on("error", (err) => {
 
 // Routes
 app.use("/api/activation", activationRoutes);
+app.use("/api/chat", chatRoutes);
+app.use("/api/user", userRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
